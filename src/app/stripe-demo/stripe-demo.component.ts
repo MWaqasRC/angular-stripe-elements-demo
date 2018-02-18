@@ -128,6 +128,11 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
       this.cardOnChange(event);
     });
 
+    this.form.addEventListener('submit', (e) =>  {
+    e.preventDefault();
+      this.onSubmit(e);
+    });
+
   } // END ngAfterViewInit //
 
   cardOnChange(event){
@@ -161,9 +166,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
         this.errorvisible = false;
       }
     }
-
   }
-
 
   onSubmit(e){
     console.log("onSubmit(e)", e);
