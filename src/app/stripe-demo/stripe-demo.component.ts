@@ -9,21 +9,17 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
   @ViewChild("stripeContainer") stripeContainer: ElementRef;
 
   constructor() { }
+  ngOnInit() { }
 
-  ngOnInit() {
-
-  }
+  api_key : string = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'; // replace me
 
   card : any;
   stripe : any;
   token : string;
-
-  elements: any;
-
-  form: any;
-  resetButton :any;
-
-  errorvisible=false;
+  elements : any;
+  form : any;
+  resetButton : any;
+  errorvisible : boolean = false;
   error_message = "";
   paymentRequestAvailable : boolean = false;
 
@@ -38,7 +34,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
     // this.errorMessage = this.error.querySelector('.message');
     // console.log(this.errorMessage);
 
-    this.stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh'); // use your test publishable key
+    this.stripe = Stripe(this.api_key); // use your test publishable key
 
     this.elements = this.stripe.elements({
       // Stripe's examples are localized to specific languages, but if
@@ -46,7 +42,6 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
       // use `locale: 'auto'` instead.
       locale: 'en'
     });
-    // console.log("NYA", this.elements);
 
     /**
      * Card Element
@@ -96,7 +91,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
     });
 
     paymentRequest.on("token", (result) => {
-      // console.log("asdf");
+      // console.log("paymentRequest.on(\"token\")");
       this.token = result.token.id;
       this.stripeContainer.nativeElement.classList.add("submitted");
       result.complete("success");
@@ -129,7 +124,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
     });
 
     this.form.addEventListener('submit', (e) =>  {
-    e.preventDefault();
+      e.preventDefault(); // this needs to be here, not in onSubmit for some reason.
       this.onSubmit(e);
     });
 
@@ -169,7 +164,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(e){
-    console.log("onSubmit(e)", e);
+    // console.log("onSubmit(e)", e);
     e.preventDefault();
 
     //o example.classList.add('submitting');
@@ -199,6 +194,7 @@ export class StripeDemoComponent implements OnInit, AfterViewInit {
       if (result.token) {
         // If we received a token, show the token ID.
         //o example.querySelector('.token').innerText = result.token.id;
+        this.token = result.token.id;
         this.stripeContainer.nativeElement.classList.add('submitted');
       } else {
         // Otherwise, un-disable inputs.

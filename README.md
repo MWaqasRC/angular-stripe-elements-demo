@@ -1,27 +1,19 @@
 # AngularStripeExample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
+This project is an example of using Stripe Elements in Angular. 
+In particular, it is a translation of the last example from the Stripe Elements [Demo Page](https://stripe.github.io/elements-examples).
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Running
 
-## Code scaffolding
+Run `ng serve` as usual.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to use the stripe-demo in your application
 
-## Build
+Besides copying the `stripe-demo` directory into your application and loading it like any other component, there are few steps your need to take.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Add  `<script src="https://js.stripe.com/v3/"></script>` to your `index.html`.  Note that you cannot copy this file into project and load locally. It *must* load this remotely. 
+* Add `declare var Stripe: any;` to `src/typings.d.ts`. This lets Angular know about the `Stripe` variable created by loading the above script.
+* Change `api_key` to your own.
+* 
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
