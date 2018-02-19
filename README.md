@@ -1,8 +1,7 @@
-# AngularStripeExample
+# angular-stripe-elements-example
 
 This project is an example of using Stripe Elements in Angular. 
 In particular, it is a translation of the last example from the Stripe Elements [Demo Page](https://stripe.github.io/elements-examples).
-
 
 ## Running
 
@@ -15,5 +14,5 @@ Besides copying the `stripe-demo` directory into your application and loading it
 * Add  `<script src="https://js.stripe.com/v3/"></script>` to your `index.html`.  Note that you cannot copy this file into project and load locally. It *must* load this remotely. 
 * Add `declare var Stripe: any;` to `src/typings.d.ts`. This lets Angular know about the `Stripe` variable created by loading the above script.
 * Change `api_key` to your own.
-* 
+* Do a `s/example5/yourprojectname/g`.
 
