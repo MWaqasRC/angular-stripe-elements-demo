@@ -1,7 +1,7 @@
 # angular-stripe-elements-example
 
 This project is an example of using Stripe Elements in Angular. 
-In particular, it is a translation of the last example from the Stripe Elements [Demo Page](https://stripe.github.io/elements-examples).
+In particular, it is a translation of the last example from the Stripe Elements [Demo Page](https://stripe.github.io/elements-examples). See a live demo [here](https://tnishimura.github.io/angular-stripe-elements-demo/index.html). 
 
 ## Running
 
